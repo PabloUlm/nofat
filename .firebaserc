@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "nofat-7891e": {
+      "hosting": {
+        "nofat": [
+          "nofat-7891e"
+        ]
+      }
+    }
+  }
+}
