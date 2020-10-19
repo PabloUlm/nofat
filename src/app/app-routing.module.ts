@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: ContainerAppComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',

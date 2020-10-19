@@ -51,7 +51,6 @@ export class AuthService {
   }
 
   private saveUserProfile(user: IUser): void {
-    debugger;
     this.afAuth.auth.currentUser.updateProfile({
       displayName: user.displayName,
       photoURL: user.photoURL,
