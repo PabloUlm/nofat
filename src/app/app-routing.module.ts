@@ -15,6 +15,10 @@ const routes: Routes = [
           import('./components/pages/home/home.module').then((m) => m.HomeModule),
       },
       {
+        path: 'admin',
+        loadChildren: () => import('./components/admin/admin.module').then((m) => m.AdminModule),
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
@@ -26,7 +30,6 @@ const routes: Routes = [
       import('./components/auth/login/login.module').then((m) => m.LoginModule),
     path: 'login',
   },
-  { path: 'admin', loadChildren: () => import('./components/admin/admin.module').then((m) => m.AdminModule) },
 ];
 
 @NgModule({

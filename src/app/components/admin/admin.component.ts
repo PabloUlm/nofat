@@ -48,4 +48,8 @@ export class AdminComponent implements OnInit {
     this.image = image;
   }
 
+  public onLogout(): void {
+    this.authSvc.logout();
+  }
+
 }

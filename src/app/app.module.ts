@@ -12,7 +12,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { MaterialModule } from './material.module';
   declarations: [
     AppComponent,
     ContainerAppComponent,
-    ToolbarComponent,
   ],
   imports: [
     AppRoutingModule,
