@@ -13,12 +13,16 @@ import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
 import { MaterialModule } from './material.module';
+import { HeaderComponent } from './components/header/header.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     ContainerAppComponent,
+    HeaderComponent,
+    PlayerComponent,
   ],
   imports: [
     AppRoutingModule,
