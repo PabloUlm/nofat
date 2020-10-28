@@ -5,3 +5,12 @@ export interface IUser {
     photoURL?: string;
     uid?: string;
 }
+
+export interface IUserData {
+    uid: string;
+    email: string;
+    photoURL?: string;
+    displayName?: string;
+    name?: string;
+    secondName?: string;
+}
