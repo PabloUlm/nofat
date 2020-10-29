@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
   });
 
   public ngOnInit(): void {
-    this.authSvc.userData$.subscribe((user) => {
+    this.authSvc.user$.subscribe((user) => {
       this.initValuesForm(user);
 
     });

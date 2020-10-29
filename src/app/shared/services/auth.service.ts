@@ -1,27 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { IFile } from '../models/file.interface';
-import { IUser, IUserData } from '../models/user.interface';
+import { IUser } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public userData$: Observable<firebase.User>;
-  public userData: AngularFirestoreCollection<IUserData>;
+  public user$: Observable<firebase.User>;
   private filePath: string;
 
   constructor(
       private afAuth: AngularFireAuth,
       private storage: AngularFireStorage,
-      private store: AngularFirestore,
     ) {
-      this.userData$ = afAuth.authState;
-      this.userData = store.collection<IUserData>('users');
+      this.user$ = afAuth.authState;
   }
 
   public loginByEmail(user: IUser): Promise<firebase.auth.UserCredential> {

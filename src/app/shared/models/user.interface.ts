@@ -11,6 +11,6 @@ export interface IUserData {
     email: string;
     photoURL?: string;
     displayName?: string;
-    name?: string;
+    firstName?: string;
     secondName?: string;
 }
