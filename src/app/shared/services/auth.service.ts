@@ -11,6 +11,7 @@ import { IUser } from '../models/user.interface';
 })
 export class AuthService {
   public user$: Observable<firebase.User>;
+  private authState: any = null;
   private filePath: string;
 
   constructor(
@@ -18,6 +19,9 @@ export class AuthService {
       private storage: AngularFireStorage,
     ) {
       this.user$ = afAuth.authState;
+      this.user$.subscribe( (authState) => {
+        this.authState = authState;
+      });
   }
 
   public loginByEmail(user: IUser): Promise<firebase.auth.UserCredential> {
@@ -28,6 +32,10 @@ export class AuthService {
 
   public logout(): void {
     this.afAuth.auth.signOut();
+  }
+
+  public getUserID(): string {
+    return this.authState.uid;
   }
 
   public preSaveUserProfile(user: IUser, image?: IFile): void {

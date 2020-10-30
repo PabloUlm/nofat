@@ -11,10 +11,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
-import { MaterialModule } from './material.module';
 import { HeaderComponent } from './components/header/header.component';
+import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
 import { PlayerComponent } from './components/player/player.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   bootstrap: [AppComponent],

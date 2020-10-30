@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IFile } from 'src/app/shared/models/file.interface';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { IUser } from '../../shared/models/user.interface';
+import { IUser, IUserData } from '../../shared/models/user.interface';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +15,7 @@ export class AdminComponent implements OnInit {
   public image: IFile;
   public currentImage = 'https://picsum.photos/id/113/150/150';
 
-  constructor(private authSvc: AuthService) { }
+  constructor(private authSvc: AuthService, private userSvc: UserService) { }
 
   public profileForm = new FormGroup({
     displayName: new FormControl('', Validators.required),
@@ -29,8 +30,12 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  public onSaveUser(user: IUser): void {
-    this.authSvc.preSaveUserProfile(user, this.image);
+  public onSaveUser(user: IUserData): void {
+    this.userSvc.saveUserData(user, this.image).then(() => {
+      console.log('Documento creado exitósamente!');
+    }, (error) => {
+      console.error(error);
+    });
   }
 
   private initValuesForm(user: IUser): void {
