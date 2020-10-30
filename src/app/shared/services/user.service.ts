@@ -28,39 +28,16 @@ export class UserService {
     );
   }
 
-  public saveUserData(user: IUserData, image?: IFile): Promise<DocumentReference> {
-    // const userAuthData = { displayName: user.displayName, photoURL: user.photoURL, email: user.email };
-    // this.authSvc.preSaveUserProfile(userAuthData, image);
+  public saveUserData(user: IUserData, image?: IFile): Promise<void> {
+    const userAuthData = { displayName: user.displayName, photoURL: user.photoURL, email: user.email };
+    this.authSvc.preSaveUserProfile(userAuthData, image);
+
     if (!this.authSvc.getUserID()) {
       console.error('User not logged! (or there is some problem with the ID)');
       return;
     }
-    console.log('BEFORE SAVING ##############');
-    const myUserDoc = this.userData.doc(this.authSvc.getUserID());
-    console.log('BEFORE SAVING: ' + this.authSvc.getUserID() + ' ##############');
-    const userTets = {
-      id: this.store.createId(),
-      uid: 'asdf',
-      email: 'asdf@asdf.de',
-      photoURL: 'asdf',
-      displayName: 'test',
-      firstName: 'Test',
-      secondName: 'TEST',
-    };
-    console.log('BEFORE SAVING: get works ##############', userTets);
 
-    return this.userData.add(userTets);
-    /* if (myUserDoc.get()) {
-      console.log('BEFORE SAVING: get works ##############');
-      myUserDoc.update(user)
-      .then(() => console.log('User UPDATED!'))
-      .catch((err) => console.log('Error', err));
-    } else {
-      console.log('BEFORE SAVING: get DOESNT work ##############');
-      myUserDoc.set(user)
-      .then(() => console.log('User SETTED!'))
-      .catch((err) => console.log('Error', err));
-    }*/
+    return this.userData.doc(this.authSvc.getUserID()).set(user);
   }
 
 }

@@ -31,10 +31,9 @@ export class AdminComponent implements OnInit {
   }
 
   public onSaveUser(user: IUserData): void {
-    this.userSvc.saveUserData(user, this.image).then(() => {
+    this.userSvc.saveUserData(user, this.image)
+    .then(() => {
       console.log('Documento creado exitósamente!');
-    }, (error) => {
-      console.error(error);
     });
   }
 
