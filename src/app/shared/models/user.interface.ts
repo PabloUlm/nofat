@@ -7,7 +7,6 @@ export interface IUser {
 }
 
 export interface IUserData {
-    uid: string;
     email: string;
     photoURL?: string;
     displayName?: string;

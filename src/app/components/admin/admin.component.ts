@@ -13,14 +13,17 @@ import { UserService } from '../../shared/services/user.service';
 export class AdminComponent implements OnInit {
 
   public image: IFile;
-  public currentImage = 'https://picsum.photos/id/113/150/150';
+  // tslint:disable-next-line:max-line-length
+  public currentImage = 'https://media-exp1.licdn.com/dms/image/C4D03AQGF32gXAyOGLg/profile-displayphoto-shrink_800_800/0?e=1609977600&v=beta&t=0bKr4eu68t4XRZjaN4AqIiS57S0hF9EAJuWvJH2OP4Q';
 
   constructor(private authSvc: AuthService, private userSvc: UserService) { }
 
   public profileForm = new FormGroup({
     displayName: new FormControl('', Validators.required),
-    email: new FormControl({ value: '', disabled: true }, Validators.required),
+    email: new FormControl('', Validators.required),
     photoURL: new FormControl('', Validators.required),
+    firstName: new FormControl('', Validators.required),
+    secondName: new FormControl('', Validators.required),
   });
 
   public ngOnInit(): void {
@@ -31,10 +34,7 @@ export class AdminComponent implements OnInit {
   }
 
   public onSaveUser(user: IUserData): void {
-    this.userSvc.saveUserData(user, this.image)
-    .then(() => {
-      console.log('Documento creado exitósamente!');
-    });
+    this.userSvc.saveUserData(user, this.image);
   }
 
   private initValuesForm(user: IUser): void {
