@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IUserData } from 'src/app/shared/models/user.interface';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.styl'],
 })
 export class HomeComponent implements OnInit {
+  public users$: Observable<IUserData[]>;
 
-  constructor() { }
+  constructor(private userSrv: UserService) {
+    this.users$ = userSrv.getAllUsers();
+  }
 
   public ngOnInit(): void {
   }

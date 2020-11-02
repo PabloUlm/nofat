@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
   });
 
   public ngOnInit(): void {
-    this.authSvc.user$.subscribe((user) => {
+    this.userSvc.getCurrentUser().subscribe((user: IUserData) => {
       this.initValuesForm(user);
 
     });
@@ -37,7 +37,7 @@ export class AdminComponent implements OnInit {
     this.userSvc.saveUserData(user, this.image);
   }
 
-  private initValuesForm(user: IUser): void {
+  private initValuesForm(user: IUserData): void {
     if (user.photoURL) {
       this.currentImage = user.photoURL;
     }
@@ -45,11 +45,14 @@ export class AdminComponent implements OnInit {
     this.profileForm.patchValue({
       displayName: user.displayName,
       email: user.email,
+      firstName: user.firstName,
+      secondName: user.secondName,
     });
   }
 
   public handleImage(image: IFile): void {
     this.image = image;
+    this.userSvc.saveUserData(this.profileForm.value, image);
   }
 
   public onLogout(): void {

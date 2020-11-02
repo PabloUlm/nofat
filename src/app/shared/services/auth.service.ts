@@ -7,14 +7,14 @@ import { IUser } from '../models/user.interface';
   providedIn: 'root',
 })
 export class AuthService {
-  public user$: Observable<firebase.User>;
+  public state$: Observable<firebase.User>;
   private authState: any = null;
 
   constructor(
       private afAuth: AngularFireAuth,
     ) {
-      this.user$ = afAuth.authState; // TODO: remove this, use only user service
-      this.user$.subscribe( (authState) => {
+      this.state$ = afAuth.authState; // TODO: remove this, use only user service
+      this.state$.subscribe( (authState) => {
         this.authState = authState;
       });
   }

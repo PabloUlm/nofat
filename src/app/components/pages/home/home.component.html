@@ -1,2 +1,8 @@
-<p>home works!</p>
+<div class="users" *ngIf="users$ | async as users; else loading">
+</div>
 
+<ng-template #loading>
+    <div class="container-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

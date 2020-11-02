@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
+import { firestore } from 'firebase';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { IFile } from '../models/file.interface';
@@ -19,6 +20,10 @@ export class UserService {
     private imageSvc: ImageService,
   ) {
     this.userData = store.collection<IUserData>('users');
+  }
+
+  public getCurrentUser(): Observable<IUserData> {
+    return this.userData.doc<IUserData>(this.authSvc.getUserID()).valueChanges();
   }
 
   public getAllUsers(): Observable<IUserData[]> {
