@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+
 import { Observable } from 'rxjs';
 import { IUser } from '../models/user.interface';
 
@@ -13,7 +14,7 @@ export class AuthService {
   constructor(
       private afAuth: AngularFireAuth,
     ) {
-      this.state$ = afAuth.authState; // TODO: remove this, use only user service
+      this.state$ = afAuth.authState;
       this.state$.subscribe( (authState) => {
         this.authState = authState;
       });

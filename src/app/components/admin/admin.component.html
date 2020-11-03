@@ -1,40 +1,41 @@
 <form (ngSubmit)="onSaveUser(profileForm.value)" [formGroup]="profileForm">
-    <mat-card class="profile-card">
-      <mat-card-header>
-        <h1>Configuración</h1>
-      </mat-card-header>
-      
-      <mat-card-content>
-        <mat-form-field>
-          <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Carlos" formControlName="firstName">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Apellidos</mat-label>
-          <input matInput placeholder="Martin Rodriguez" formControlName="secondName">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Alias</mat-label>
-          <input matInput placeholder="Chorifeler" formControlName="displayName">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input type="email" matInput placeholder="Email" formControlName="email">
-        </mat-form-field>
-        <div>
-          <img [src]="currentImage" (click)="inputImageProfile.click()" />
-          <input hidden type="file" #inputImageProfile formControlName="photoURL"
-            (change)="handleImage(($event?.target?.files)[0])" />
-        </div>
+    <h1>Settings</h1>
 
-        <div class="mat-dialog-actions">
-          <input type="submit" class="mat-flat-button" value="Save" />
-        </div>
-        
-        <a (click)="onLogout()">
-          <button mat-button>Logout</button>
-        </a>
-      </mat-card-content>
-    </mat-card>
+    <section class="inputs-section">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Carlos" formControlName="firstName">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Apellidos</mat-label>
+        <input matInput placeholder="Martin Rodriguez" formControlName="secondName">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Alias</mat-label>
+        <input matInput placeholder="Chorifeler" formControlName="displayName">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+  
+      <div class="image-selector">
+        <img [src]="currentImage" (click)="inputImageProfile.click()" />
+        <input hidden type="file" #inputImageProfile formControlName="photoURL"
+          (change)="handleImage(($event?.target?.files)[0])" />
+      </div>
+    </section>
+
+    <div class="mat-dialog-actions">
+      <input type="submit" class="mat-flat-button" value="Save" />
+    </div>
+
   </form>
+
+  <a (click)="onLogout()">
+    <button mat-button>Logout</button>
+  </a>
   

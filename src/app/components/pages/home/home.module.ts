@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from 'src/app/material.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { PlayerComponent } from '../../player/player.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, PlayerComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

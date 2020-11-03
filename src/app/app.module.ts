@@ -13,7 +13,6 @@ import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
-import { PlayerComponent } from './components/player/player.component';
 import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { MaterialModule } from './material.module';
     AppComponent,
     ContainerAppComponent,
     HeaderComponent,
-    PlayerComponent,
   ],
   imports: [
     AppRoutingModule,
