@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { IExercise } from '../models/exercise.interface';
 import { ITraining } from '../models/training.interface';
-import { Observable, of } from 'rxjs';
+import { combineLatest, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -17,18 +17,28 @@ export class TrainingService {
     this.exercisesCollection = store.collection('exercises');
   }
 
-  public getDefaultTraining(): Observable<ITraining> {
+  public getDefaultTraining(): Observable<any> { // Observable<ITraining> {
     return this.getTrainingById('default');
   }
 
-  public getTrainingById(id: string): Observable<ITraining> {
+  public getTrainingById(id: string): Observable<any> { // Observable<ITraining> {
     const exercise: IExercise = {
       id: 'test',
       description: 'bla',
     };
     const trainingDemo: ITraining = {exercises: [exercise]};
 
-    return this.trainingsCollection.doc(id).valueChanges().pipe(
+    return this.store.doc('trainings/default').valueChanges().pipe(
+      map((training) => {
+        const obsArray = [];
+        for (let exercise of training['exercises']) {
+          obsArray.push(this.store.doc());
+        }
+        return combineLatest(obsArray);
+      })
+    );
+
+    return this.trainingsCollection.doc(id).snapshotChanges().pipe(
       map((training) => {
         console.log(training);
       }),
