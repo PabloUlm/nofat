@@ -1,1 +1,5 @@
-<p>preview works!</p>
+<ul *ngIf="(training$ | async) as training">
+    <li *ngFor="let exercise of training | keyvalue">
+        {{ exercise.value.id }}
+    </li>
+</ul>

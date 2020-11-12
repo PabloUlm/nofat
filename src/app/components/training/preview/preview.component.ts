@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ITraining } from '../../../shared/models/training.interface';
 
 @Component({
   selector: 'app-preview',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./preview.component.styl']
 })
 export class PreviewComponent implements OnInit {
+
+  @Input() training$: BehaviorSubject<ITraining> = new BehaviorSubject({});
 
   constructor() { }
 

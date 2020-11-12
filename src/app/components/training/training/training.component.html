@@ -1,1 +1,3 @@
-<app-preview></app-preview>
+<app-preview *ngIf="!isWorkingOut" [training$]="trainingSvc.defaultTraining$"></app-preview>
+https://www.npmjs.com/package/ngx-countdown
+<button mat-button mat-raised-button color="primary" (click)="isWorkingOut = true">START</button>

@@ -9,13 +9,11 @@ import { TrainingService } from '../../../shared/services/training.service';
   styleUrls: ['./training.component.styl']
 })
 export class TrainingComponent implements OnInit {
-  public defaultTraining$: Observable<ITraining>;
-
-  constructor(private trainingSvc: TrainingService) { }
+  public isWorkingOut = false;
+  constructor(public trainingSvc: TrainingService) { }
 
   ngOnInit(): void {
-    this.defaultTraining$ = this.trainingSvc.getDefaultTraining();
-    this.defaultTraining$.subscribe((result) => {
+    this.trainingSvc.defaultTraining$.subscribe((result) => {
       console.log('RESULT:::::', result);
     });
   }
